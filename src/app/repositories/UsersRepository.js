@@ -43,7 +43,7 @@ class UsersRepository {
     const [row] = await db.query(`
       UPDATE users
       SET name = $1, email = $2, phone = $3, cpf = $4, birthDate = $5, genre = $6
-      WHERE id = $5
+      WHERE id = $7
       RETURNING *
     `, [name, email, phone, cpf, birthDate, genre, id]);
 

@@ -49,28 +49,29 @@ class UserController {
   async update(request, response) {
     const { id } = request.params;
     const {
-      name, email, phone, category_id,
+      name, email, phone, cpf, birthDate, genre,
     } = request.body;
 
-    const contactExists = await UserRepository.findById(id);
-    if (!contactExists) {
-      return response.status(404).json({ error: 'Contact not found' });
+    const userExists = await UserRepository.findById(id);
+    if (!userExists) {
+      return response.status(404).json({ error: 'User not found' });
     }
 
     if (!name) {
       return response.status(400).json({ error: 'Name is required' });
     }
 
-    const contactByEmail = await UserRepository.findByEmail(email);
-    if (contactByEmail && contactByEmail.id !== id) {
+    const userEmail = await UserRepository.findByEmail(email);
+
+    if (userEmail && userEmail.id !== id) {
       return response.status(400).json({ error: 'This e-mail is alredy in use' });
     }
 
-    const contact = await UserRepository.update(id, {
-      name, email, phone, category_id,
+    const user = await UserRepository.update(id, {
+      name, email, phone, cpf, birthDate, genre,
     });
 
-    response.json(contact);
+    response.json(user);
   }
 
   async delete(request, response) {
