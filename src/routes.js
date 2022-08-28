@@ -4,7 +4,7 @@ const UserController = require('./app/controllers/UserController');
 
 const router = Router();
 
-router.get('/user', UserController.index);
+router.get('/users', UserController.index);
 router.get('/users/:id', UserController.show);
 router.delete('/users/:id', UserController.delete);
 router.post('/users', UserController.store);

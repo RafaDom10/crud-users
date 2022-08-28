@@ -22,7 +22,7 @@ class UserController {
 
   async store(request, response) {
     const {
-      name, email, phone, cpf, birthDate, genre
+      name, email, phone, cpf, birthDate, genre,
     } = request.body;
 
     if (!name) {
@@ -40,7 +40,7 @@ class UserController {
     }
 
     const user = await UserRepository.create({
-      name, email, phone, cpf, birthDate, genre
+      name, email, phone, cpf, birthDate, genre,
     });
 
     response.status(201).json(user);

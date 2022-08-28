@@ -10,5 +10,5 @@ CREATE TABLE IF NOT EXISTS users (
   phone VARCHAR,
   cpf VARCHAR,
   genre VARCHAR,
-  birthDate VARCHAR,
+  birthDate VARCHAR
 );
